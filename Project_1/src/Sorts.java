@@ -1,4 +1,3 @@
-
 public class Sorts {
 	
 	public static void selectionSort(int[] arr, int N) {
@@ -92,7 +91,7 @@ public class Sorts {
 			arr[center] = temp;
 		}
 
-		if (arr[last] > arr[first]) {
+		if (arr[last] < arr[first]) {
 			temp = arr[first];
 			arr[first] = arr[last];
 			arr[last] = temp;
@@ -108,13 +107,13 @@ public class Sorts {
 	private static int splitList(int[] arr, int left, int right) {
 		int temp;
 		int indexL = left;
-		int indexR = right-1;
+		int indexR = right - 1;
 		int pivot = right;
 		while (indexL <= indexR) {
 			while (arr[indexL] < arr[pivot]) {
 				indexL++;
 			}
-			while (arr[indexR] > arr[pivot] && indexL <= indexR) {
+			while (indexL <= indexR && arr[indexR] > arr[pivot]) {
 				indexR--;
 			}
 			if (indexL <= indexR) {
