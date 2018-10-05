@@ -8,28 +8,28 @@ public class Sorts1 {
     private static long mergeCount;
     private static long quickCount;
 	
-	public static long selectionSort(int[] arr, int N) {
+	public static long selectionSort(int[] list, int N) {
         selectionCount = 0;
 		int minIndex = 0;
 		int temp;
 		for (int i = 0; i < N; i++) {
-			temp = arr[i];
+			temp = list[i];
 			for (int j = i+1; j < N; j++) {
                 selectionCount++;
-				if (arr[j] < temp) {
+				if (list[j] < temp) {
 					minIndex = j;
-					temp = arr[j];
+					temp = list[j];
 				}
 			}
-			arr[minIndex] = arr[i];
-			arr[i] = temp;
+			arr[minIndex] = list[i];
+			list[i] = temp;
         }
         return selectionCount;
 	}
 	
-	public static long mergeSort(int[] arr, int N) {
+	public static long mergeSort(int[] list, int N) {
         mergeCount = 0;
-        mergeSort(arr, 0, N-1);
+        mergeSort(list, 0, N-1);
         return mergeCount;
 	}
 	

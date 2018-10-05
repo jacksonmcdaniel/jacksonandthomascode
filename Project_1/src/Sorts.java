@@ -4,24 +4,24 @@ Project 1 - 10/05/2018 */
 
 public class Sorts {
 	
-	public static void selectionSort(int[] arr, int N) {
+	public static void selectionSort(int[] list, int N) {
 		int minIndex = 0;
 		int temp;
 		for (int i = 0; i < N; i++) {
-			temp = arr[i];
+			temp = list[i];
 			for (int j = i+1; j < N; j++) {
-				if (arr[j] < temp) {
+				if (list[j] < temp) {
 					minIndex = j;
-					temp = arr[j];
+					temp = list[j];
 				}
 			}
-			arr[minIndex] = arr[i];
-			arr[i] = temp;
+			list[minIndex] = list[i];
+			list[i] = temp;
 		}
 	}
 	
-	public static void mergeSort(int[] arr, int N) {
-		mergeSort(arr, 0, N-1);
+	public static void mergeSort(int[] list, int N) {
+		mergeSort(list, 0, N-1);
 	}
 	
 	private static void mergeSort (int[] list, int first, int last) {
