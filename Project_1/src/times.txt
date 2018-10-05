@@ -1,3 +1,7 @@
+/* Jackson McDaniel - jkmcdani@calpoly.edu
+Thomas Bramble - trbrambl@calpoly.edu
+Project 1 - 10/05/2018 */
+
 N=5000: T_ss=40, T_ms=14, T_qs=20
 N=5000: T_ss=55, T_ms=1, T_qs=25
 N=5000: T_ss=35, T_ms=1, T_qs=0

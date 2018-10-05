@@ -1,3 +1,7 @@
+/* Jackson McDaniel - jkmcdani@calpoly.edu
+Thomas Bramble - trbrambl@calpoly.edu
+Project 1 - 10/05/2018 */
+
 import java.util.Random;
 import static java.lang.System.nanoTime;
 
@@ -11,11 +15,12 @@ public class SortCounts {
         int N = 100;
         Random rand = new Random();
         // Initialize Arraylists for each sorting algorithm
+        int[] arrSS = new int[160000];
+        int[] arrMS = new int[160000];
+        int[] arrQS = new int[160000];
+
 
         for (int i = N; i <= 12800; i *= 2) { 
-            int[] arrSS = new int[N];
-            int[] arrMS = new int[N];
-            int[] arrQS = new int[N];
 
             long selectionCounts = 0;
             long mergeCounts = 0;
@@ -24,7 +29,7 @@ public class SortCounts {
             for (int k = 0; k < 100; k++) {
 
                 for (int j = 0; j < N; j++) {
-                    int next = rand.nextInt(1000);
+                    int next = rand.nextInt(N);
                     arrSS[j] = next;
                     arrMS[j] = next;
                     arrQS[j] = next;

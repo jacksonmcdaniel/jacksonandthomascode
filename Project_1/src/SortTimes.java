@@ -1,4 +1,9 @@
+/* Jackson McDaniel - jkmcdani@calpoly.edu
+Thomas Bramble - trbrambl@calpoly.edu
+Project 1 - 10/05/2018 */
+
 import java.util.Random;
+
 import static java.lang.System.nanoTime;
 
 class SortTimes {
@@ -6,18 +11,17 @@ class SortTimes {
     public static void main(String[] args) {
         int N = 5000;
         Random rand = new Random();
-        // Initialize Arraylists for each sorting algorithm
+        
+        int[] arrSS = new int[160000];
+        int[] arrMS = new int[160000];
+        int[] arrQS = new int[160000];
 
         for (int i = 0; i < 6; i++) {    
-            int[] arrSS = new int[N];
-            int[] arrMS = new int[N];
-            int[] arrQS = new int[N];
-
 
             for (int k = 0; k < 5; k++) {
                 
                 for (int j = 0; j < N; j++) {
-                    int next = rand.nextInt(1000);
+                    int next = rand.nextInt(N);
                     arrSS[j] = next;
                     arrMS[j] = next;
                     arrQS[j] = next;

@@ -1,3 +1,7 @@
+/* Jackson McDaniel - jkmcdani@calpoly.edu
+Thomas Bramble - trbrambl@calpoly.edu
+Project 1 - 10/05/2018 */
+
 public class Main {
 
 	public static void main(String[] args) {

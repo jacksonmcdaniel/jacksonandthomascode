@@ -1,3 +1,7 @@
+/* Jackson McDaniel - jkmcdani@calpoly.edu
+Thomas Bramble - trbrambl@calpoly.edu
+Project 1 - 10/05/2018 */
+
 public class Sorts1 {
 
     private static long selectionCount;
@@ -124,12 +128,11 @@ public class Sorts1 {
 		int indexR = right - 1;
 		int pivot = right;
 		while (indexL <= indexR) {
-            quickCount++;
 			while (arr[indexL] < arr[pivot]) {
                 indexL++;
                 quickCount++;
-            }
-            quickCount++;
+			}
+			quickCount++;
 			while (indexL <= indexR && arr[indexR] > arr[pivot]) {
                 indexR--;
                 quickCount++;
@@ -140,6 +143,7 @@ public class Sorts1 {
 				arr[indexR] = temp;
 				indexL++;
 				indexR--;
+				quickCount++;
 			}
 		}
 		temp = arr[indexL];
