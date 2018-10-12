@@ -1,33 +1,75 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
 public class MatrixWork {
 
-    public static void main(String[] args) {
-
+    public static void main(String[] args) throws FileNotFoundException {
+    	String fileName; 
+    	Scanner sc = new Scanner(System.in);
+    		
+    	System.out.print("Enter file name: ");
+    	
+    	fileName = sc.nextLine();
+    	File file = new File("C:\\Users\\trbra\\eclipse-workspace\\MatrixMultiplication\\src\\" + fileName);
+    	
+    	sc = new Scanner(file);
+    	
+    	int row, column;
+    	
+    	row = sc.nextInt();
+    	column = sc.nextInt();
+    	int[][] A = new int[row][column];
+    	
+    	for (int i = 0; i < row; i++) {
+    		for (int j = 0; j < column; j++) {
+    			A[i][j] = sc.nextInt();
+    		}
+    	}
+    	
+    	row = sc.nextInt();
+    	column = sc.nextInt();
+    	int[][] B = new int[row][column];
+    	
+    	for (int i = 0; i < row; i++) {
+    		for (int j = 0; j < column; j++) {
+    			B[i][j] = sc.nextInt();
+    		}
+    	}
+    	
+    	
+    	
+        int[][] C = matrixProduct(A, B);
+    	
+        System.out.println("Product matrix:");
+        for (int i = 0; i < C.length; i++) {
+    		for (int j = 0; j < C[0].length; j++) {
+    			System.out.print(C[i][j] + " ");
+    		}
+    		System.out.println();
+    	}
+        
     }
 
     public static int[][] matrixProduct(int[][] A, int[][] B) throws IllegalArgumentException {
-        int[][] returnMatrix = new int[A.length][B[0].length];
-        int aRows = A.length;
-        int aCols = A[0].length;
-        int bRows = B.length;
-        int bRows = B[0].length;
+        int n = A.length;
+        int k = B.length;
+        int m = B[0].length;
         
-        if (aCols != bRows) {
-            throw IllegalArgumentException();
+        if (A[0].length != k) 
+        	throw new IllegalArgumentException();
+        int[][] C = new int[n][m];
+        
+        for (int i = 0; i < n; i++) {
+        	for (int j = 0; j < m; j++) {
+        		for (int l = 0; l < k; l++) {
+        			C[i][j] = C[i][j] + A[i][l] * B[l][j];
+        		}
+        	}
         }
-
-        for (int i = 0; i < aRows; i++) {
-            for (int j = 0; j < bCols; j++) {
-                
-            }
-        }
+        
+        return C;
 
     }
 
-    private static int dotProduct(int[] row, int[] col) {
-        int result = 0;
-        for (int i = 0; i < row.length; i++) {
-            result += row[i] * col[i]; 
-        }
-        return result;
-    }
 }
