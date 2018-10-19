@@ -39,7 +39,7 @@ public class Main {
     	
     	
     	try {
-    		int[][] C = MatrixProduct.matrixProduct_DAC(A, B);
+    		int[][] C = MatrixProduct.matrixProduct_Strassen(A, B);
     	
     	
 	        System.out.println("Product matrix:");
