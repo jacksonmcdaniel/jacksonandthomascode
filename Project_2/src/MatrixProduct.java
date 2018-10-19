@@ -42,10 +42,10 @@ public class MatrixProduct {
 		if (n == 1)
 			C[0][0] = A[startRowA][startColA] * B[startRowB][startColB];
 		else {
-			int[][] C11 = matrixSum(matrixProduct_Recurse(A, 0, 0, B, 0, 0, halfN), matrixProduct_Recurse(A, 0, halfN, B, halfN, 0, halfN));
-			int[][] C12 = matrixSum(matrixProduct_Recurse(A, 0, 0, B, 0, halfN, halfN), matrixProduct_Recurse(A, 0, halfN, B, halfN, halfN, halfN));
-			int[][] C21 = matrixSum(matrixProduct_Recurse(A, halfN, 0, B, 0, 0, halfN), matrixProduct_Recurse(A, halfN, halfN, B, halfN, 0, halfN));
-			int[][] C22 = matrixSum(matrixProduct_Recurse(A, halfN, 0, B, 0, halfN, halfN), matrixProduct_Recurse(A, halfN, halfN, B, halfN, halfN, halfN));
+			int[][] C11 = matrixSum(matrixProduct_Recurse(A, startRowA, startColA, B, startRowB, startColB, halfN), matrixProduct_Recurse(A, startRowA, startColA+halfN, B, startRowB+halfN, startColB, halfN));
+			int[][] C12 = matrixSum(matrixProduct_Recurse(A, startRowA, startColA, B, startRowB, startColB + halfN, halfN), matrixProduct_Recurse(A, startRowA, halfN, B, halfN, halfN, halfN));
+			int[][] C21 = matrixSum(matrixProduct_Recurse(A, startRowA + halfN, startColA, B, startRowB, startColB, halfN), matrixProduct_Recurse(A, startRowA+halfN, startColA+halfN, B, startRowB+halfN, startColB, halfN));
+			int[][] C22 = matrixSum(matrixProduct_Recurse(A, startRowA + halfN, startColA, B, startRowB, startColB + halfN, halfN), matrixProduct_Recurse(A, startRowA+halfN, startColA+halfN, B, startRowB+halfN, startColB+halfN, halfN));
 		
 			int k = 0, l = 0;
 			for (int i = 0; i < halfN; i++) {
@@ -53,6 +53,7 @@ public class MatrixProduct {
 					C[k][l] = C11[i][j];
 					l++;
 				}
+				l = 0;
 				k++;
 			}
 			
@@ -63,6 +64,7 @@ public class MatrixProduct {
 					C[k][l] = C12[i][j];
 					l++;
 				}
+				l = halfN;
 				k++;
 			}
 			
@@ -73,6 +75,7 @@ public class MatrixProduct {
 					C[k][l] = C21[i][j];
 					l++;
 				}
+				l = 0;
 				k++;
 			}
 			
@@ -83,6 +86,7 @@ public class MatrixProduct {
 					C[k][l] = C22[i][j];
 					l++;
 				}
+				l = halfN;
 				k++;
 			}
 			

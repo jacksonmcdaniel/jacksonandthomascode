@@ -11,7 +11,7 @@ public class Main {
     	System.out.print("Enter file name: ");
     	
     	fileName = sc.nextLine();
-    	File file = new File("C:\\Users\\trbra\\csc349\\jacksonandthomascode\\Project_2\\testing\\" + fileName);
+    	File file = new File("./testing/" + fileName);
     	
     	sc = new Scanner(file);
     	

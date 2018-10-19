@@ -11,7 +11,7 @@ public class MatrixWork {
     	System.out.print("Enter file name: ");
     	
     	fileName = sc.nextLine();
-    	File file = new File("C:\\Users\\trbra\\eclipse-workspace\\MatrixMultiplication\\src\\" + fileName);
+    	File file = new File("./testing/" + fileName);
     	
     	sc = new Scanner(file);
     	
