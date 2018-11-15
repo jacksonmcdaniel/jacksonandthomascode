@@ -1,8 +1,13 @@
+/*
+Jackson McDaniel - jkmcdani@calpoly.edu
+Thomas Bramble - trbrambl@calpoly.edu
+Project 4 - 11/14/2018
+*/
+
 import java.util.Arrays;
 import java.util.Scanner;
 
 public class ChangeMaker {
- 
     
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -16,6 +21,7 @@ public class ChangeMaker {
         }
 
         int[] B;
+        int[] R;
         int temp;
         boolean trigger;
         while (n > 0) {
@@ -28,7 +34,7 @@ public class ChangeMaker {
                 System.out.println();
                 System.out.println("DP algorithm results");
                 System.out.println("Amount: " + n);
-                System.out.print("Optimal Solution: ");
+                System.out.print("Optimal distribution: ");
 
                 for (int i = 0; i < B.length; i++) {
                     if (B[i] > 0) {
@@ -46,9 +52,34 @@ public class ChangeMaker {
                 System.out.println();
                 System.out.println("Optimal coin count: " + temp);
                 System.out.println();
+
+                trigger = false;
+                temp = 0;
+
+                R = change_greedy(n, d);
+                System.out.println("Greedy algorithm results");
+                System.out.println("Amount: " + n);
+                System.out.print("Optimal distribution: ");
+
+                for (int i = 0; i < R.length; i++) {
+                    if (R[i] > 0) {
+                        if (trigger) {
+                            System.out.print(" + " + R[i] + "*" + d[i] + "c");
+                            temp += R[i];
+                        } 
+                        else {
+                            System.out.print(R[i] + "*" + d[i] + "c");
+                            temp += R[i];
+                            trigger = true;
+                        }
+                    }
+                }
+                System.out.println();
+                System.out.println("Optimal coin count: " + temp);
+                System.out.println();
             }
         }
-        System.out.println("quit");
+        System.out.println("Thanks for playing. Good Bye.");
         
     }
 
@@ -85,6 +116,19 @@ public class ChangeMaker {
     }
 
     public static int[] change_greedy(int n, int[] d) {
-        
+        int[] results = new int[d.length];
+        int dIndex = 0;
+        int resultsIndex = 0;
+
+        while (n > 0) {
+            if (n >= d[dIndex]) {
+                n = n - d[dIndex];
+                results[resultsIndex]++;
+            } else {
+                dIndex++;
+                resultsIndex++;
+            }
+        }
+        return results;
     }
 }
