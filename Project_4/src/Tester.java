@@ -53,6 +53,7 @@ public class Tester {
                 testResultsSet++;
             }
         }
+        System.out.println("Testing change_DP and change_greedy algorithms");
         System.out.println("Testing set1: " + testResultsUS + " matches in 200 tests");
         System.out.println("Testing set2: " + testResultsSoviet + " matches in 200 tests");
         System.out.println("Testing set3: " + testResultsPowers + " matches in 200 tests");
