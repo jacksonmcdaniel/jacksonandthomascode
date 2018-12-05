@@ -144,7 +144,7 @@ public class DiGraph {
 
     private TreeNode buildTree(int s) {
         VertexInfo[] VA = BFS(s - 1);
-        TreeNode root = new TreeNode(s);
+        TreeNode root = new TreeNode(s - 1);
 
         buildTree_recursive(root, VA);
 
@@ -172,7 +172,7 @@ public class DiGraph {
             System.out.print(" ");
         }
 
-        System.out.println(node.vertexNum);
+        System.out.println(node.vertexNum + 1);
         int size = node.list.size();
         for (int i = 0; i < size; i++) {
             printTree_recursive(node.list.get(i), indentation + 4);
