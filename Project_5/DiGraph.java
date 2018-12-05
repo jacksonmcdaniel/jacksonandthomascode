@@ -86,4 +86,111 @@ public class DiGraph {
         }
         return A;
     }
+
+    private VertexInfo[] BFS(int s) {
+        int N = arr.length;
+        VertexInfo[] VA = new VertexInfo[N];
+        for (int u = 0; u < N; u++) {
+            VA[u] = new VertexInfo();
+        }
+        VA[s].distance = 0;
+        LinkedList<Integer> Q = new LinkedList<>();
+        Q.addLast(s);
+        int u;
+        while (!Q.isEmpty()) {
+            u = Q.removeFirst();
+            for (int i = 0; i < arr[u].size(); i++) {
+                if (VA[arr[u].get(i)].distance == -1) {
+                    VA[arr[u].get(i)].distance = VA[u].distance + 1;
+                    VA[arr[u].get(i)].predecessor = u;
+                    Q.addLast(arr[u].get(i));
+                }
+            }
+        }
+        return VA;
+    }
+
+    public boolean isTherePath(int from, int to) {
+        VertexInfo[] VA = BFS(from - 1);
+        if (VA[to - 1].distance == -1) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+    
+    public int lengthOfPath(int from, int to) {
+        VertexInfo[] VA = BFS(from - 1);
+        return VA[to - 1].distance;
+    }
+
+    public void printPath(int from, int to) {
+        VertexInfo[] VA = BFS(from - 1);
+        String output = "";
+
+        if (!isTherePath(from, to)) {
+            System.out.println("No Path");
+            return;
+        } else {
+            to = to - 1;
+            while (from - 1 != to) {
+                output = "->" + (to + 1) + output;
+                to = VA[to].predecessor;
+            }
+            output = from + output;
+        }
+        System.out.println(output);
+    }
+
+    private TreeNode buildTree(int s) {
+        VertexInfo[] VA = BFS(s - 1);
+        TreeNode root = new TreeNode(s);
+
+        buildTree_recursive(root, VA);
+
+        return root;
+    }
+
+    private void buildTree_recursive(TreeNode node, VertexInfo[] VA) {
+        for (int i = 0; i < VA.length; i++) {
+            if (VA[i].predecessor == node.vertexNum) {
+                TreeNode newNode = new TreeNode(i); 
+                node.list.add(newNode);
+                buildTree_recursive(newNode, VA);
+            }
+        }
+    }
+
+    public void printTree(int s) {
+        TreeNode root = buildTree(s);
+
+        printTree_recursive(root, 0);
+    }
+
+    private void printTree_recursive(TreeNode node, int indentation) {
+        for (int i = 0; i < indentation; i++) {
+            System.out.print(" ");
+        }
+
+        System.out.println(node.vertexNum);
+        int size = node.list.size();
+        for (int i = 0; i < size; i++) {
+            printTree_recursive(node.list.get(i), indentation + 4);
+        }
+        
+    }
+
+    private class VertexInfo {
+        public int distance = -1;
+        public int predecessor = -1;
+    }
+
+    private class TreeNode {
+        public int vertexNum;
+        public LinkedList<TreeNode> list = new LinkedList<TreeNode>();
+
+        public TreeNode(int i) {
+            this.vertexNum = i;
+        }
+    }
 }

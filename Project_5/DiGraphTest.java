@@ -15,6 +15,10 @@ public class DiGraphTest {
         System.out.println("- edge count (enter e)");
         System.out.println("- vertex count (enter v)");
         System.out.println("- print graph (enter p)");
+        System.out.println("- is there path (enter i)");
+        System.out.println("- length of path (enter l)");
+        System.out.println("- shortest path (enter s)");
+        System.out.println("- print BFS tree (enter b)");
         System.out.println("- Quit (enter q)");
 
         String input;
@@ -74,6 +78,32 @@ public class DiGraphTest {
                         System.out.println("Graph is cyclic!");
                     }
                     
+                    break;
+                case 'i':
+                    System.out.println("Enter two vertices");
+                    vertex1 = sc.nextInt();
+                    vertex2 = sc.nextInt();
+                    if (graph.isTherePath(vertex1, vertex2)) {
+                        System.out.println("There is a path");
+                    } else {
+                        System.out.println("There is not a path");
+                    }
+                    break;
+                case 'l':
+                    System.out.println("Enter two vertices");
+                    vertex1 = sc.nextInt();
+                    vertex2 = sc.nextInt();
+                    System.out.println(graph.lengthOfPath(vertex1, vertex2));
+                    break;
+                case 's':
+                    System.out.println("Enter two vertices");
+                    vertex1 = sc.nextInt();
+                    vertex2 = sc.nextInt();
+                    graph.printPath(vertex1, vertex2);
+                    break;
+                case 'b':
+                    vertex1 = sc.nextInt();
+                    graph.printTree(vertex1);
                     break;
                 case 'q':
                     System.out.println("Bye bye");
